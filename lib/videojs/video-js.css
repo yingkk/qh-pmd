@@ -520,6 +520,7 @@ body.vjs-full-window {
 .video-js button {
   background: none;
   border: none;
+  outline: none;
   color: inherit;
   display: inline-block;
   font-size: inherit;

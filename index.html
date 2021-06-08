@@ -144,17 +144,19 @@
                             <div class="swiper-slide">
                                 <img src="./imgs/6-1.png" alt="">
                                 <div class="video">
-                                    <video class="video-js vjs-big-play-centered" controls data-setup="{}" preload="auto">
+                                    <video id="video0" class="video-js vjs-big-play-centered" controls data-setup="{}"
+                                        preload="auto" playsinline="true">
                                         <source src="./video/6-1.mp4">
                                         </source>
                                     </video>
                                 </div>
-                               
+
                             </div>
                             <div class="swiper-slide">
                                 <img src="./imgs/6-2.png" alt="">
                                 <div class="video">
-                                    <video class="video-js vjs-big-play-centered" controls data-setup="{}" preload="auto">
+                                    <video id="video1" class="video-js vjs-big-play-centered" controls data-setup="{}"
+                                        preload="auto" playsinline="true">
                                         <source src="./video/6-2.mp4">
                                         </source>
                                     </video>
@@ -193,10 +195,13 @@
 
 <script>
     var _index = 0;
+    var player;
     //main init
     $(".main div[class*=tab-]").hide();
     $(".main .tab-" + _index).show();
     initSwiper(0);
+    initVideo(0);
+
     NProgress.start();
     window.onload = function () {
         NProgress.done()
@@ -216,6 +221,10 @@
         $(".main div[class*=tab-]").hide();
         $(".main .tab-" + _index).show();
         initSwiper(_index);
+        if (player) {
+            player.pause();
+            player.load();
+        }
     });
 
     function initSwiper(index) {
@@ -226,6 +235,15 @@
                 nextEl: ".tab-" + _index + " .main-content .swiper-container .swiper-button-next",
                 prevEl: ".tab-" + _index + " .main-content .swiper-container .swiper-button-prev",
             },
+            on: {
+                slideChange: function () {
+                    if (player) {
+                        player.pause();
+                        player.load();
+                    }
+                    initVideo(this.activeIndex);
+                },
+            },
         });
     }
 
@@ -235,7 +253,10 @@
     })
 
     //video
-    
+    function initVideo(index) {
+        player = videojs('video' + index)
+    }
+
 
 </script>
 

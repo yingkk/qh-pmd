@@ -24,3 +24,8 @@ img {
     width: auto9; /* ie8 */
     -ms-interpolation-mode: bicubic;/*防止ie图片缩放失真*/ 
 }
+button{
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
