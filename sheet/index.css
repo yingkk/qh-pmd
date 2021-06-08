@@ -69,11 +69,11 @@ body {
 
 .container .main .main-content .swiper-container .swiper-slide .video {
   position: absolute;
-  top: 0.8rem;
-  left: 1.5rem;
-  width: 7rem;
+  top: 0.9rem;
+  left: 1.4rem;
+  width: 7.2rem;
   height: 4.2rem;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .container .main .main-content .swiper-container .swiper-slide .video .video-js {
