@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   background-image: url(../imgs/bg.jpg);
   background-size: cover;
@@ -76,10 +77,10 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  width: 6rem;
+  width: 5.8rem;
   padding-top: 100%;
-  border-top: .013333rem dashed #e8e8e8;
-  border-left: .013333rem dashed #e8e8e8;
+  border-top: 0.013333rem dashed #e8e8e8;
+  border-left: 0.013333rem dashed #e8e8e8;
   border-top-left-radius: 100%;
   box-sizing: border-box;
   z-index: 1;
@@ -99,29 +100,62 @@ body {
 
 .container .tab .item2 {
   right: 1.5rem;
-  top: 0.1rem;
+  top: 0.2rem;
 }
 
 .container .tab .item3 {
   right: 2.6rem;
-  top: 1rem;
+  top: 1.1rem;
 }
 
 .container .tab .item4 {
-  right: 3.6rem;
-  top: 2.1rem;
+  right: 3.4rem;
+  top: 2.2rem;
 }
 
 .container .tab .item5 {
-  right: 4.2067rem;
-  top: 3.4067rem;
+  right: 4rem;
+  top: 3.4rem;
 }
 
 .container .tab .item6 {
-  right: 4.8067rem;
-  top: 4.7067rem;
+  right: 4.5rem;
+  top: 4.7rem;
 }
 
 .container .tab .active {
   transform: scale(1.3);
+}
+
+/*兼容iphoneX*/
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .container .tab {
+    height: 7rem;
+    position: fixed;
+    bottom: 0;
+  }
+  .container .tab .item1 {
+    right: 0.2rem;
+    top: -0.5rem;
+  }
+  .container .tab .item2 {
+    right: 1.6rem;
+    top: 0.2rem;
+  }
+  .container .tab .item3 {
+    right: 2.7rem;
+    top: 1.2rem;
+  }
+  .container .tab .item4 {
+    right: 3.5rem;
+    top: 2.5rem;
+  }
+  .container .tab .item5 {
+    right: 4.2rem;
+    top: 3.9rem;
+  }
+  .container .tab .item6 {
+    right: 4.7rem;
+    top: 5.4rem;
+  }
 }

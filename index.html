@@ -10,17 +10,16 @@
     <script src="lib/flexible/flexible.js"></script>
     <script src="lib/jquery/jquery-1.11.0.min.js"></script>
     <script src="lib/swiper/swiper-bundle.js"></script>
-    <!-- <script src="js/index.js"></script> -->
     <title>青海省自然资源博物馆</title>
 </head>
 
 <body>
     <div class="container">
         <div class="header">
-            <a class="ar">
+            <a class="ar" href="ar.html">
                 <img src="./imgs/ar.png" alt="AR">
             </a>
-            <a class="logo">
+            <a class="logo" href="index.html">
                 <img src="./imgs/logo.png" alt="青海省自然资源博物馆">
             </a>
         </div>
@@ -32,18 +31,18 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            <a class="swiper-slide" href="http://www.baidu.com">
                                 <img src="./imgs/1-1.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
+                            </a>
+                            <a class="swiper-slide">
                                 <img src="./imgs/1-2.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
+                            </a>
+                            <a class="swiper-slide">
                                 <img src="./imgs/1-3.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
+                            </a>
+                            <a class="swiper-slide">
                                 <img src="./imgs/1-4.png" alt="">
-                            </div>
+                            </a>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -57,9 +56,9 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            <a class="swiper-slide">
                                 <img src="./imgs/2-1.png" alt="">
-                            </div>
+                            </a>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -73,9 +72,9 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            <a class="swiper-slide">
                                 <img src="./imgs/3-1.png" alt="">
-                            </div>
+                            </a>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -90,12 +89,15 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            <a class="swiper-slide">
                                 <img src="./imgs/4-1.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
+                            </a>
+                            <a class="swiper-slide">
                                 <img src="./imgs/4-2.png" alt="">
-                            </div>
+                            </a>
+                            <a class="swiper-slide">
+                                <img src="./imgs/4-3.png" alt="">
+                            </a>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -109,15 +111,18 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            <a class="swiper-slide">
                                 <img src="./imgs/5-1.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
+                            </a>
+                            <a class="swiper-slide">
                                 <img src="./imgs/5-2.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
+                            </a>
+                            <a class="swiper-slide">
                                 <img src="./imgs/5-3.png" alt="">
-                            </div>
+                            </a>
+                            <a class="swiper-slide">
+                                <img src="./imgs/5-4.png" alt="">
+                            </a>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -132,12 +137,12 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            <a class="swiper-slide">
                                 <img src="./imgs/6-1.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
+                            </a>
+                            <a class="swiper-slide">
                                 <img src="./imgs/6-2.png" alt="">
-                            </div>
+                            </a>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -174,6 +179,7 @@
     //main init
     $(".main div[class*=tab-]").hide();
     $(".main .tab-" + _index).show();
+    initSwiper(0);
     //tab init
     $(".tab .tab-item").eq(0).find("img").eq(0).attr("src", "../imgs/tab-1-active.png")
     $(".tab .tab-item").eq(0).addClass("active");
