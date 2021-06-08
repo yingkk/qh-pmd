@@ -1,0 +1,131 @@
+body {
+  background-image: url(../imgs/bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .header {
+    width: 100%;
+    height: 1.2rem; //90px
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: none;
+    position: relative;
+
+    .ar {
+      position: absolute;
+      top: 50%;
+      left: 0.6667rem; // 50px
+      width: 0.52rem;
+      height: 0.52rem; //39px
+      margin-top: -0.26rem;
+    }
+
+    .logo {
+      width: 2.2267rem;
+      height: 0.9333rem;
+    }
+  }
+
+  .main {
+    width: 100%;
+    height: 10.1733rem;
+    margin-top: 0.2667rem;
+    flex: none;
+
+    .main-title {
+      width: 6rem;
+      height: 3.8533rem;
+      margin: 0 auto;
+    }
+
+    .main-content {
+      width: 100%;
+      height: 6.32rem;
+      margin: 0 auto;
+
+      .swiper-container {
+        width: 100%;
+        height: 100%;
+
+        .swiper-slide {
+          padding: 0 1.2rem;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+
+  .tab {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .arc {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 6rem;
+      padding-top: 100%;
+      // width: 100%; 
+      // height: 100%;
+      border-top: .013333rem dashed #e8e8e8;
+      border-left: .013333rem dashed #e8e8e8;
+      border-top-left-radius: 100%;
+      box-sizing: border-box;
+      z-index: 1;
+    }
+
+    .tab-item {
+      position: absolute;
+      width: 1.28rem; //96px  48
+      height: 1.28rem;
+      z-index: 2;
+    }
+
+    .item1 {
+      right: 0.2rem;
+      top: -0.4rem;
+    }
+
+    .item2 {
+      right: 1.5rem;
+      top: 0.1rem;
+    }
+
+    .item3 {
+      right: 2.6rem;
+      top: 1rem;
+    }
+
+    .item4 {
+      right: 3.6rem;
+      top: 2.1rem;
+    }
+
+    .item5 {
+      right: 4.2067rem;
+      top: 3.4067rem;
+    }
+
+    .item6 {
+      right: 4.8067rem;
+      top: 4.7067rem;
+    }
+
+    .active {
+      // width: 1.6933rem;  //127px--128px--64
+      // height: 1.6933rem;
+
+      transform: scale(1.3);
+    }
+  }
+}
