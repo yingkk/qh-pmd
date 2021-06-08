@@ -67,6 +67,31 @@ body {
   box-sizing: border-box;
 }
 
+.container .main .main-content .swiper-container .swiper-slide .video {
+  position: absolute;
+  top: 0.8rem;
+  left: 1.5rem;
+  width: 7rem;
+  height: 4.2rem;
+  object-fit: cover;
+}
+
+.container .main .main-content .swiper-container .swiper-slide .video .video-js {
+  width: 100%;
+  height: 100%;
+}
+
+.container .main .main-content .swiper-container .swiper-slide .video .video-js .vjs-big-play-button {
+  border-radius: 50%;
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.container .main .main-content .swiper-container .swiper-slide .video .vjs-big-play-centered .vjs-big-play-button {
+  margin-left: -0.8em;
+  margin-top: -0.8em;
+}
+
 .container .tab {
   width: 100%;
   height: 100%;
@@ -90,6 +115,7 @@ body {
   position: absolute;
   width: 1.28rem;
   height: 1.28rem;
+  cursor: pointer;
   z-index: 2;
 }
 
