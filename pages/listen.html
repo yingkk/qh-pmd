@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="../sheet/common.css">
+    <link rel="stylesheet" href="../lib/nprogress/nprogress.css">
+    <link rel="stylesheet" href="../sheet/play.css">
+    <script src="../lib/flexible/flexible.js"></script>
+    <script src="../lib/jquery/jquery-1.11.0.min.js"></script>
+    <script src="../util/UrlParam.js"></script>
+    <script src="../js/player.js"></script>
+    <script src="../lib/nprogress/nprogress.js"></script>
+    <title>青海省自然资源博物馆</title>
+</head>
+
+<body>
+    <div class="wrap youbian" id="main_box">
+        <div class="box">
+            <div class="flex_box">
+                <div class="flex_item">
+                    <div class="song_info">
+                        <div class="cont">
+                            <h2 class="song" id="song_name"><span></span></h2>
+                            <p class="singer" id="goSinger">
+                                <del>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</del>
+                                <span></span>
+                                <del>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</del>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="album_cover">
+                    <div class="cover_container">
+                        <img id="album_pic" onerror="this.src = '../audio/1.jpg'; this.onerror=null;"
+                            onload="canShowLrc = true;imgOnloadTime=(+new Date())" src="../audio/1.jpg">
+                    </div>
+                </div>
+                <div class="flex_item"></div>
+            </div>
+        </div>
+        <!--播放进度条-->
+        <div class="play_bar">
+            <div class="progress" id="progress">
+                <div class="bar"></div>
+                <div class="has_load" id="play_loading"></div>
+                <div class="has_play" id="play_on">
+                    <span id="btn_pro"><i></i></span>
+                </div>
+            </div>
+            <p class="play_time"><time id="currentTime">00:00</time><time id="totalTime">00:00</time></p>
+        </div>
+
+        <div class="kognzhianniu">
+            <a href="javascript:;" class="btn_play" id="play"><span></span><i></i></a>
+            <a href="javascript:;" class="btn_play play_left" id="play_prev_btn"><span></span><i></i></a>
+            <a href="javascript:;" class="btn_play play_right" id="play_next_btn"><span></span><i></i></a>
+        </div>
+        <div class="gradient_mask"></div>
+        <div class="bg" style="background-image:url(../audio/1.jpg); "></div>
+        <div class="bg_mask" style="opacity:0.6;"></div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            new Musice({
+                list: [
+                    {
+                        name: '秃鹫',
+                        singer: '博物馆配音',
+                        mp3: '../audio/1.mp3',
+                        img: '../audio/1.jpg'
+                    },
+                    {
+                        name: '黑颈鹤',
+                        singer: '青海配音',
+                        mp3: '../audio/2.mp3',
+                        img: '../audio/2.jpg'
+                    },
+                    {
+                        name: '摄影人鲍永清：用镜头记录大自然之美',
+                        singer: '青海自然博物馆配音',
+                        mp3: '../audio/3.mp3',
+                        img: '../audio/3.jpg'
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+
+</html>

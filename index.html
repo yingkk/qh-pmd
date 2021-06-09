@@ -20,7 +20,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <a class="ar" href="ar.html">
+            <a class="ar" href="./pages/ar.html">
                 <img src="./imgs/ar.png" alt="AR">
             </a>
             <a class="logo" href="index.html">
@@ -35,16 +35,16 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a class="swiper-slide" href="http://www.baidu.com">
+                            <a class="swiper-slide" href="http://www.baidu.com" data-hash="1">
                                 <img src="./imgs/1-1.png" alt="">
                             </a>
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" data-hash="2">
                                 <img src="./imgs/1-2.png" alt="">
                             </a>
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" data-hash="3">
                                 <img src="./imgs/1-3.png" alt="">
                             </a>
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" data-hash="4">
                                 <img src="./imgs/1-4.png" alt="">
                             </a>
                         </div>
@@ -60,7 +60,7 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" data-hash="1">
                                 <img src="./imgs/2-1.png" alt="">
                             </a>
                         </div>
@@ -76,7 +76,7 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" data-hash="1">
                                 <img src="./imgs/3-1.png" alt="">
                             </a>
                         </div>
@@ -93,13 +93,13 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" href="pages/listen.html?id=1" data-hash="1">
                                 <img src="./imgs/4-1.png" alt="">
                             </a>
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" href="pages/listen.html?id=2" data-hash="2">
                                 <img src="./imgs/4-2.png" alt="">
                             </a>
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" href="pages/listen.html?id=3" data-hash="3">
                                 <img src="./imgs/4-3.png" alt="">
                             </a>
                         </div>
@@ -115,23 +115,22 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" data-hash="1">
                                 <img src="./imgs/5-1.png" alt="">
                             </a>
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" data-hash="2">
                                 <img src="./imgs/5-2.png" alt="">
                             </a>
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" data-hash="3">
                                 <img src="./imgs/5-3.png" alt="">
                             </a>
-                            <a class="swiper-slide">
+                            <a class="swiper-slide" data-hash="4">
                                 <img src="./imgs/5-4.png" alt="">
                             </a>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
-
                 </div>
             </div>
             <div class="tab-5">
@@ -141,7 +140,7 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" data-hash="1">
                                 <img src="./imgs/6-1.png" alt="">
                                 <div class="video">
                                     <video id="video0" class="video-js vjs-big-play-centered" controls data-setup="{}"
@@ -152,7 +151,7 @@
                                 </div>
 
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" data-hash="2">
                                 <img src="./imgs/6-2.png" alt="">
                                 <div class="video">
                                     <video id="video1" class="video-js vjs-big-play-centered" controls data-setup="{}"
@@ -194,33 +193,36 @@
 </body>
 
 <script>
-    var _index = 0;
+    NProgress.start();
+    var _index;
     var player;
+    var tabIndex = window.localStorage.getItem("tabIndex");
+    _index = parseInt(tabIndex) ? parseInt(tabIndex) : 0;
+
     //main init
     $(".main div[class*=tab-]").hide();
     $(".main .tab-" + _index).show();
-    initSwiper(0);
-    initVideo(0);
+    initSwiper(_index);
+    _index === 5 ? initVideo(0) : null;
 
-    NProgress.start();
-    window.onload = function () {
-        NProgress.done()
-    }
     //tab init
-    $(".tab .tab-item").eq(0).find("img").eq(0).attr("src", "../imgs/tab-1-active.png")
-    $(".tab .tab-item").eq(0).addClass("active");
+    $(".tab .tab-item").eq(_index).find("img").eq(0).attr("src", "../imgs/tab-" + (_index + 1) + "-active.png")
+    $(".tab .tab-item").eq(_index).addClass("active");
 
     $(".tab .tab-item").click(function () {
         const _defaultSrc = $(".tab .active").find("img").eq(0).attr("data-default-src");
         $(".tab .active").find("img").eq(0).attr("src", _defaultSrc);
         $(".tab .tab-item").removeClass("active");
         _index = $(this).index();
+        window.localStorage.setItem("tabIndex", _index);
         const _activeSrc = "../imgs/tab-" + (_index + 1) + "-active.png";
         $(this).find("img").eq(0).attr("src", _activeSrc);
         $(this).addClass("active");
         $(".main div[class*=tab-]").hide();
         $(".main .tab-" + _index).show();
         initSwiper(_index);
+        _index === 5 ? initVideo(0) : null;
+        resetHashParam();
         if (player) {
             player.pause();
             player.load();
@@ -228,12 +230,16 @@
     });
 
     function initSwiper(index) {
-        var swiper = new Swiper(".tab-" + _index + " .main-content .swiper-container", {
+        var swiper = new Swiper(".tab-" + index + " .main-content .swiper-container", {
             allowTouchMove: false,
             preventClicks: false,
+            hashNavigation: true,
+            hashNavigation: {
+                watchState: true
+            },
             navigation: {
-                nextEl: ".tab-" + _index + " .main-content .swiper-container .swiper-button-next",
-                prevEl: ".tab-" + _index + " .main-content .swiper-container .swiper-button-prev",
+                nextEl: ".tab-" + index + " .main-content .swiper-container .swiper-button-next",
+                prevEl: ".tab-" + index + " .main-content .swiper-container .swiper-button-prev",
             },
             on: {
                 slideChange: function () {
@@ -241,23 +247,51 @@
                         player.pause();
                         player.load();
                     }
-                    initVideo(this.activeIndex);
+                    // todo 导致页面闪烁
+                    if (index === 5) {
+                        initVideo(this.activeIndex)
+                    }
                 },
             },
         });
     }
 
-    //nprogress
+    function initVideo(index) {
+        player = videojs('video' + index);
+    }
+
+    // 重置URL-hash参数为1
+    function resetHashParam() {
+        var url = window.location.href;
+        var hash = window.location.hash;
+        url = url.replace(hash, '');
+        window.location.href = url + "#1";
+    }
+
+    // when refresh clear
+    // 点击刷新页面按钮或者通过Location.reload()方法显示的页面
+    if (window.performance.navigation.type === 1) {
+        window.localStorage.setItem("tabIndex", 0);
+    }
+
+    // reset .tab bottom
+    // index.html通过历史记录和前进后退访问时
+    if (window.performance.navigation.type === 2) {
+        $(".tab").css("bottom", "1.3067rem")
+    }
+
+    // nprogress
     $("a").click(function () {
         NProgress.start();
     })
 
-    //video
-    function initVideo(index) {
-        player = videojs('video' + index)
+    window.onload = function () {
+        NProgress.done()
     }
 
 
+
 </script>
+
 
 </html>
