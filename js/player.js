@@ -145,15 +145,21 @@
       this._play_prev_btn.click(function () {
         self._index =
           self._index == 0 ? self._musice_data.length - 1 : self._index - 1;
+          console.log(self._index)
+          window.localStorage.setItem("audioIndex",self._index);
         self.musice_switch();
         self._set_play();
+        
       });
 
       this._play_next_btn.click(function () {
         self._index =
           self._index == self._musice_data.length - 1 ? 0 : self._index + 1;
+          console.log(self._index)
+          window.localStorage.setItem("audioIndex",self._index);
         self.musice_switch();
         self._set_play();
+       
       });
 
       this._js_audio.addEventListener("ended", function () {

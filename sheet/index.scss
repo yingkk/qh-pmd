@@ -221,3 +221,41 @@ body {
     }
   }
 }
+
+//swiper next prev button reset
+.swiper-button-next:after,
+.swiper-container-rtl .swiper-button-prev:after {
+  content: "";
+  background-size: cover;
+  background-image: url("../imgs/right1.png");
+  width: 0.6133rem;
+  height: 1.12rem;
+}
+
+.swiper-button-next.swiper-button-disabled::after {
+  content: "";
+  background-size: cover;
+  background-image: url("../imgs/right0.png");
+  width: 0.6133rem;
+  height: 1.12rem;
+}
+
+.swiper-button-prev:after,
+.swiper-container-rtl .swiper-button-next:after {
+  content: "";
+  background-size: cover;
+  background-image: url("../imgs/left1.png");
+  width: 0.6133rem;
+  height: 1.12rem;
+}
+.swiper-button-prev.swiper-button-disabled::after {
+  content: "";
+  background-size: cover;
+  background-image: url("../imgs/left0.png");
+  width: 0.6133rem;
+  height: 1.12rem;
+}
+.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
+  cursor: auto;
+  pointer-events: none;
+}

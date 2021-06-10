@@ -145,7 +145,7 @@
                                 <div class="video">
                                     <video id="video0" class="video-js vjs-big-play-centered" controls data-setup="{}"
                                         preload="auto" playsinline="true">
-                                        <source src="./video/6-1.mp4">
+                                        <source src="./video/6-3.mp4">
                                         </source>
                                     </video>
                                 </div>
@@ -156,7 +156,7 @@
                                 <div class="video">
                                     <video id="video1" class="video-js vjs-big-play-centered" controls data-setup="{}"
                                         preload="auto" playsinline="true">
-                                        <source src="./video/6-2.mp4">
+                                        <source src="./video/6-4.mp4">
                                         </source>
                                     </video>
                                 </div>
@@ -194,16 +194,25 @@
 
 <script>
     NProgress.start();
-    var _index;
-    var player;
-    var tabIndex = window.localStorage.getItem("tabIndex");
-    _index = parseInt(tabIndex) ? parseInt(tabIndex) : 0;
+
+    // video init all
+    let videoJSArr = [];
+    const videoElemIds = ["video0", "video1"];
+    for (let i = 0; i < videoElemIds.length; i++) {
+        videoJSArr.push(initVideo(videoElemIds[i]));
+    }
+
+    // 点击swiper-slide进入详情再返回时，定位到对应的tab
+    const tabIndex = window.localStorage.getItem("tabIndex");
+    let _index = parseInt(tabIndex) ? parseInt(tabIndex) : 0;
+
+    // 点击下一首返回时定位到对应的swiper
+    const audioIndex = window.localStorage.getItem("audioIndex") || 0;
 
     //main init
     $(".main div[class*=tab-]").hide();
     $(".main .tab-" + _index).show();
     initSwiper(_index);
-    _index === 5 ? initVideo(0) : null;
 
     //tab init
     $(".tab .tab-item").eq(_index).find("img").eq(0).attr("src", "../imgs/tab-" + (_index + 1) + "-active.png")
@@ -221,12 +230,8 @@
         $(".main div[class*=tab-]").hide();
         $(".main .tab-" + _index).show();
         initSwiper(_index);
-        _index === 5 ? initVideo(0) : null;
-        resetHashParam();
-        if (player) {
-            player.pause();
-            player.load();
-        }
+        resetHashParam(1);
+        pauseAll();
     });
 
     function initSwiper(index) {
@@ -243,29 +248,35 @@
             },
             on: {
                 slideChange: function () {
-                    if (player) {
-                        player.pause();
-                        player.load();
-                    }
-                    // todo 导致页面闪烁
                     if (index === 5) {
-                        initVideo(this.activeIndex)
+                        this.activeIndex ? pause(0) : pause(1);
                     }
                 },
             },
         });
     }
 
-    function initVideo(index) {
-        player = videojs('video' + index);
+    function initVideo(elemId) {
+        return videojs(document.getElementById(elemId));
     }
 
-    // 重置URL-hash参数为1
-    function resetHashParam() {
-        var url = window.location.href;
-        var hash = window.location.hash;
+    function pauseAll() {
+        for (let i = 0; i < videoJSArr.length; i++) {
+            pause(i);
+        }
+    }
+
+    function pause(_index) {
+        videoJSArr[_index].pause();
+        videoJSArr[_index].load();
+    }
+
+    // 重置URL hash参数：swiper的data-hash 为1
+    function resetHashParam(dataHashVal) {
+        let url = window.location.href;
+        let hash = window.location.hash;
         url = url.replace(hash, '');
-        window.location.href = url + "#1";
+        window.location.href = url + "#" + dataHashVal;
     }
 
     // when refresh clear
@@ -278,6 +289,9 @@
     // index.html通过历史记录和前进后退访问时
     if (window.performance.navigation.type === 2) {
         $(".tab").css("bottom", "1.3067rem")
+        if (_index === 3) {
+            resetHashParam(parseInt(audioIndex) + 1)
+        }
     }
 
     // nprogress
@@ -289,9 +303,6 @@
         NProgress.done()
     }
 
-
-
 </script>
-
 
 </html>
