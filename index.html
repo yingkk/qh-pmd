@@ -35,7 +35,9 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a class="swiper-slide" href="http://www.baidu.com" data-hash="1">
+                            <a class="swiper-slide"
+                                href="http://www.qhdzzl.org.cn:9004/zybwg/zrbwg/resource/other/101/GAO_1533.html"
+                                data-hash="1">
                                 <img src="./imgs/1-1.png" alt="">
                             </a>
                             <a class="swiper-slide" data-hash="2">
@@ -60,7 +62,9 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a class="swiper-slide" data-hash="1">
+                            <a class="swiper-slide"
+                                href="http://www.qhdzzl.org.cn:9004/zybwg/zrbwg/resource/img/by/gjgylc/qinghaidemo/index.html?startscene=1"
+                                data-hash="1">
                                 <img src="./imgs/2-1.png" alt="">
                             </a>
                         </div>
@@ -76,7 +80,9 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a class="swiper-slide" data-hash="1">
+                            <a class="swiper-slide"
+                                href="http://www.qhdzzl.org.cn:9004/zybwg/zrbwg/resource/other/bpbxb/index.html"
+                                data-hash="1">
                                 <img src="./imgs/3-1.png" alt="">
                             </a>
                         </div>
@@ -93,12 +99,22 @@
                 <div class="main-content">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a class="swiper-slide" href="pages/listen.html?id=1" data-hash="1">
+                            <div class="swiper-slide" data-hash="1">
                                 <img src="./imgs/4-1.png" alt="">
-                            </a>
-                            <a class="swiper-slide" href="pages/listen.html?id=2" data-hash="2">
+                                <div class="icon" data-audio-id="0">
+                                    <audio id="audio0" src="./audio/1.mp3" hidden="hidden"></audio>
+                                    <img class="play" src="./imgs/audio-play.png">
+                                    <img class="pause" src="./imgs/audio-pause.png">
+                                </div>
+                            </div>
+                            <div class="swiper-slide" data-hash="2">
                                 <img src="./imgs/4-2.png" alt="">
-                            </a>
+                                <div class="icon" data-audio-id="1">
+                                    <audio id="audio1" src="./audio/2.mp3" hidden="hidden"></audio>
+                                    <img class="play" src="./imgs/audio-play.png">
+                                    <img class="pause" src="./imgs/audio-pause.png">
+                                </div>
+                            </div>
                             <a class="swiper-slide" href="pages/listen.html?id=3" data-hash="3">
                                 <img src="./imgs/4-3.png" alt="">
                             </a>
@@ -195,6 +211,7 @@
 <script>
     NProgress.start();
 
+
     // video init all
     let videoJSArr = [];
     const videoElemIds = ["video0", "video1"];
@@ -232,7 +249,10 @@
         initSwiper(_index);
         resetHashParam(1);
         pauseAll();
+        pauseAudioAll();
     });
+
+
 
     function initSwiper(index) {
         var swiper = new Swiper(".tab-" + index + " .main-content .swiper-container", {
@@ -250,6 +270,9 @@
                 slideChange: function () {
                     if (index === 5) {
                         this.activeIndex ? pause(0) : pause(1);
+                    }
+                    if (index === 3) {
+                        pauseAudioAll()
                     }
                 },
             },
@@ -269,7 +292,53 @@
     function pause(_index) {
         videoJSArr[_index].pause();
         videoJSArr[_index].load();
+
     }
+
+    //audio
+    let audioArr = [];
+    const audioIds = ["audio0", "audio1"];
+    audioInit();
+
+    function audioInit() {
+        for (let i = 0; i < audioIds.length; i++) {
+            audioArr.push(document.getElementById(audioIds[i]));
+        }
+    }
+
+    function pauseAudioAll() {
+        for (let i = 0; i < audioArr.length; i++) {
+            pauseAudio(i);
+        }
+    }
+
+    function pauseAudio(_index) {
+        audioArr[_index].pause();
+        audioArr[_index].load();
+        // const ele = document.getElementById("audio" + _index);
+        // ele.nextAll().eq(0).show();
+        // ele.nextAll().eq(1).hide();
+    }
+
+    let curAudio;
+    $(".swiper-slide .icon").click(function () {
+        const audioId = parseInt($(this).attr("data-audio-id"));
+        curAudio = audioArr[audioId];
+        if (curAudio.paused) {
+            curAudio.play();
+            $(this).find(".play").hide();
+            $(this).find(".pause").show();
+        } else {
+            curAudio.pause();
+            $(this).find(".play").show();
+            $(this).find(".pause").hide();
+        }
+        curAudio.onended = function () {
+            $(this).nextAll().eq(0).show();
+            $(this).nextAll().eq(1).hide();
+        }
+    })
+
 
     // 重置URL hash参数：swiper的data-hash 为1
     function resetHashParam(dataHashVal) {
@@ -303,6 +372,47 @@
         NProgress.done()
     }
 
+</script>
+
+<!-- weixin start-->
+<!-- <script type="text/javascript" src="http://res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script> -->
+<script>
+    // const appId = "wxeaff5efba9206909";
+    // const secret = "f01c49b689892fcfb153b45c28bf8988";
+    // const tokenUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + appId + "&secret=" + secret;
+    // const jsapiUrl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi"
+
+    // $.ajaxSetup({
+    //     xhrFields: {
+    //         withCredentials: true
+    //     }
+    // });
+
+    // function getToken() {
+    //     $.ajax({
+    //         type: "GET",
+    //         url: tokenUrl,
+    //         dataType: "jsonp",
+    //         jsonp: "callback",
+    //         jsonpCallback: "callback",
+    //         success: function (data) {
+    //             console.log(data)
+    //         },
+    //         error: function (err) {
+    //             console.log(err);
+    //         }
+    //     });
+    // }
+
+    // wx.config({
+    //     debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印
+    //     appId: appId, // 必填，公众号的唯一标识
+    //     timestamp: '', // 必填，生成签名的时间戳
+    //     nonceStr: 'nonceStr', // 必填，生成签名的随机串
+    //     signature: 'signature',// 必填，签名
+    //     jsApiList: [], // 必填，需要使用的JS接口列表
+    //     openTagList: ['wx-open-launch-weapp'] // 可选，需要使用的开放标签列表，例如['wx-open-launch-app']
+    // });
 </script>
 
 </html>

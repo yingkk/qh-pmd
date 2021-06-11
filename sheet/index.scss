@@ -58,15 +58,11 @@ body {
         height: 100%;
 
         .swiper-slide {
+          width: 100%;
+          height: 100%;
           padding: 0 1.2rem;
           box-sizing: border-box;
           .video {
-            // position: absolute;
-            // top: 0.8rem;
-            // left: 1.5rem;
-            // width: 7rem;
-            // height: 4.2rem;
-            // object-fit: cover;
             position: absolute;
             top: 0.9rem;
             left: 1.4rem;
@@ -89,6 +85,18 @@ body {
             .vjs-big-play-centered .vjs-big-play-button {
               margin-left: -0.8em;
               margin-top: -0.8em;
+            }
+          }
+          .icon {
+            position: absolute;
+            right: 3.2rem;
+            bottom: 0;
+            width: 1.5867rem;
+            height: 1.4667rem;
+            z-index: 2;
+            cursor: pointer;
+            .pause {
+              display: none;
             }
           }
         }
@@ -255,7 +263,8 @@ body {
   width: 0.6133rem;
   height: 1.12rem;
 }
-.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
   cursor: auto;
   pointer-events: none;
 }

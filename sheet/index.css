@@ -63,6 +63,8 @@ body {
 }
 
 .container .main .main-content .swiper-container .swiper-slide {
+  width: 100%;
+  height: 100%;
   padding: 0 1.2rem;
   box-sizing: border-box;
 }
@@ -95,6 +97,20 @@ body {
 .container .main .main-content .swiper-container .swiper-slide .video .vjs-big-play-centered .vjs-big-play-button {
   margin-left: -0.8em;
   margin-top: -0.8em;
+}
+
+.container .main .main-content .swiper-container .swiper-slide .icon {
+  position: absolute;
+  right: 3.2rem;
+  bottom: 0;
+  width: 1.5867rem;
+  height: 1.4667rem;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.container .main .main-content .swiper-container .swiper-slide .icon .pause {
+  display: none;
 }
 
 .container .tab {
@@ -225,7 +241,8 @@ body {
   height: 1.12rem;
 }
 
-.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
   cursor: auto;
   pointer-events: none;
 }
