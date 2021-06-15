@@ -210,7 +210,10 @@
 
 <script>
     NProgress.start();
-
+    //audio init all
+    let audioArr = [];
+    const audioIds = ["audio0", "audio1"];
+    audioInit();
 
     // video init all
     let videoJSArr = [];
@@ -222,9 +225,6 @@
     // 点击swiper-slide进入详情再返回时，定位到对应的tab
     const tabIndex = window.localStorage.getItem("tabIndex");
     let _index = parseInt(tabIndex) ? parseInt(tabIndex) : 0;
-
-    // 点击下一首返回时定位到对应的swiper
-    const audioIndex = window.localStorage.getItem("audioIndex") || 0;
 
     //main init
     $(".main div[class*=tab-]").hide();
@@ -253,7 +253,6 @@
     });
 
 
-
     function initSwiper(index) {
         var swiper = new Swiper(".tab-" + index + " .main-content .swiper-container", {
             allowTouchMove: false,
@@ -269,10 +268,12 @@
             on: {
                 slideChange: function () {
                     if (index === 5) {
-                        this.activeIndex ? pause(0) : pause(1);
+                        pauseAll();
                     }
                     if (index === 3) {
                         pauseAudioAll()
+                        $(".swiper-slide .icon .play").show();
+                        $(".swiper-slide .icon .pause").hide();
                     }
                 },
             },
@@ -292,13 +293,7 @@
     function pause(_index) {
         videoJSArr[_index].pause();
         videoJSArr[_index].load();
-
     }
-
-    //audio
-    let audioArr = [];
-    const audioIds = ["audio0", "audio1"];
-    audioInit();
 
     function audioInit() {
         for (let i = 0; i < audioIds.length; i++) {
@@ -315,9 +310,6 @@
     function pauseAudio(_index) {
         audioArr[_index].pause();
         audioArr[_index].load();
-        // const ele = document.getElementById("audio" + _index);
-        // ele.nextAll().eq(0).show();
-        // ele.nextAll().eq(1).hide();
     }
 
     let curAudio;
@@ -358,9 +350,6 @@
     // index.html通过历史记录和前进后退访问时
     if (window.performance.navigation.type === 2) {
         $(".tab").css("bottom", "1.3067rem")
-        if (_index === 3) {
-            resetHashParam(parseInt(audioIndex) + 1)
-        }
     }
 
     // nprogress
