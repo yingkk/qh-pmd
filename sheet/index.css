@@ -40,9 +40,8 @@ body {
 
 .container .main {
   width: 100%;
-  height: 10.1733rem;
+  height: 100%;
   margin-top: 0.2667rem;
-  flex: none;
 }
 
 .container .main .main-title {
@@ -114,22 +113,16 @@ body {
 }
 
 .container .tab {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 218px;
   position: relative;
-}
-
-.container .tab .arc {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 5.8rem;
-  padding-top: 100%;
   border-top: 0.013333rem dashed #e8e8e8;
   border-left: 0.013333rem dashed #e8e8e8;
   border-top-left-radius: 100%;
   box-sizing: border-box;
   z-index: 1;
+  align-self: flex-end;
+  flex: none;
 }
 
 .container .tab .tab-item {
@@ -141,72 +134,40 @@ body {
 }
 
 .container .tab .item1 {
-  right: 0.2rem;
-  top: -0.4rem;
+  right: 0rem;
+  bottom: 5rem;
 }
 
 .container .tab .item2 {
-  right: 1.5rem;
-  top: 0.2rem;
+  right: 1.2rem;
+  bottom: 4.5rem;
 }
 
 .container .tab .item3 {
-  right: 2.6rem;
-  top: 1.1rem;
+  right: 2.4rem;
+  bottom: 3.8rem;
 }
 
 .container .tab .item4 {
   right: 3.4rem;
-  top: 2.2rem;
+  bottom: 2.92rem;
 }
 
 .container .tab .item5 {
   right: 4rem;
-  top: 3.4rem;
+  bottom: 1.68rem;
 }
 
 .container .tab .item6 {
-  right: 4.5rem;
-  top: 4.7rem;
+  right: 4.2rem;
+  bottom: .4rem;
 }
 
 .container .tab .active {
-  transform: scale(1.3);
+  transform: scale(1.1);
 }
 
 /*兼容iphoneX*/
-@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-  .container .tab {
-    height: 7rem;
-    position: fixed;
-    bottom: 0;
-  }
-  .container .tab .item1 {
-    right: 0.2rem;
-    top: -0.5rem;
-  }
-  .container .tab .item2 {
-    right: 1.6rem;
-    top: 0.2rem;
-  }
-  .container .tab .item3 {
-    right: 2.7rem;
-    top: 1.2rem;
-  }
-  .container .tab .item4 {
-    right: 3.5rem;
-    top: 2.5rem;
-  }
-  .container .tab .item5 {
-    right: 4.2rem;
-    top: 3.9rem;
-  }
-  .container .tab .item6 {
-    right: 4.7rem;
-    top: 5.4rem;
-  }
-}
-
 .swiper-button-next:after,
 .swiper-container-rtl .swiper-button-prev:after {
   content: "";
