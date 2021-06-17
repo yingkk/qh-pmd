@@ -20,7 +20,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <a class="ar" href="weixin://dl/business/?t=VzkYmDZKBpj" target="blank">
+            <a class="ar" href="javascript: void(0)" target="_blank" data-url="weixin://dl/business/?t=VzkYmDZKBpj"
+                onclick="handleClick(event, this)">
                 <img src="./imgs/ar.png" alt="AR">
             </a>
             <a class="logo" href="index.html">
@@ -40,16 +41,16 @@
                                 data-hash="1">
                                 <img src="./imgs/1-1.png" alt="">
                             </a>
-                            <a class="swiper-slide" data-hash="2" href="weixin://dl/business/?t=dguZDPnvejv"
-                                target="blank">
+                            <a class="swiper-slide" data-hash="2" href="javascript: void(0)" target="_blank"
+                                data-url="weixin://dl/business/?t=dguZDPnvejv" onclick="handleClick(event, this)">
                                 <img src="./imgs/1-2.png" alt="">
                             </a>
-                            <a class="swiper-slide" data-hash="3" href="weixin://dl/business/?t=bWH3OZdmXDi"
-                                target="blank">
+                            <a class="swiper-slide" data-hash="3" href="javascript: void(0)" target="_blank"
+                                data-url="weixin://dl/business/?t=bWH3OZdmXDi" onclick="handleClick(event, this)">
                                 <img src="./imgs/1-3.png" alt="">
                             </a>
-                            <a class="swiper-slide" data-hash="4" href="weixin://dl/business/?t=IaggWdPkbcq"
-                                target="blank">
+                            <a class="swiper-slide" data-hash="4" href="javascript: void(0)" target="_blank"
+                                data-url="weixin://dl/business/?t=IaggWdPkbcq" onclick="handleClick(event, this)">
                                 <img src="./imgs/1-4.png" alt="">
                             </a>
                         </div>
@@ -92,7 +93,6 @@
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
-
                 </div>
             </div>
             <div class="tab-3">
@@ -212,22 +212,6 @@
 </body>
 
 <script>
-
-    // docReady()
-    // function docReady() {
-    //     var isMobile = false;
-    //     if (navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile)/i)) {
-    //         isMobile = true
-    //     } else {
-    //         isMobile = false
-    //     }
-    //     if (!isMobile) {
-    //         // 在 pc 上则给提示引导到手机端打开
-    //         location.href = ""
-    //         alert("请到手机端打开");
-    //         return;
-    //     }
-    // }
 
     NProgress.start();
     //audio init all
@@ -366,24 +350,25 @@
         window.localStorage.setItem("tabIndex", 0);
     }
 
-    // reset .tab bottom
-    // index.html通过历史记录和前进后退访问时
-    // if (window.performance.navigation.type === 2) {
-    //     $(".tab").css("bottom", "2rem")
-    // }
-
     // nprogress
     $("a").click(function () {
         NProgress.start();
     })
 
-
     window.onload = function () {
         NProgress.done()
     }
 
-
-
+    function handleClick(e, item) {
+        e.preventDefault();
+        const url = item.attributes["data-url"].nodeValue;
+        const isDesktop = !(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile)/i));
+        const isWeixinUrl = url.startsWith("weixin");
+        if (isWeixinUrl && isDesktop) {
+            alert("请在手机打开网页链接");
+            return;
+        }
+    }
 </script>
 
 </html>

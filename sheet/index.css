@@ -134,13 +134,13 @@ body {
 }
 
 .container .tab .item1 {
-  right: 0rem;
+  right: 0.1rem;
   bottom: 5rem;
 }
 
 .container .tab .item2 {
-  right: 1.2rem;
-  bottom: 4.5rem;
+  right: 1.4rem;
+  bottom: 4.6rem;
 }
 
 .container .tab .item3 {
@@ -160,7 +160,7 @@ body {
 
 .container .tab .item6 {
   right: 4.2rem;
-  bottom: .4rem;
+  bottom: 0.4rem;
 }
 
 .container .tab .active {
