@@ -20,11 +20,16 @@ a:hover {
 
 /*禁止长按保存*/
 img {
-    pointer-events: none;
-    width: auto9; /* ie8 */
-    -ms-interpolation-mode: bicubic;/*防止ie图片缩放失真*/ 
+  user-select: none;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  width: auto9; /* ie8 */
+  -ms-interpolation-mode: bicubic; /*防止ie图片缩放失真*/
 }
-button{
+button {
   border: none;
   outline: none;
   background-color: transparent;

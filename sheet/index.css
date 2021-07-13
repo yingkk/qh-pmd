@@ -45,8 +45,7 @@ body {
 }
 
 .container .main .main-title {
-  width: 6rem;
-  height: 3.8533rem;
+  width: 5rem;
   margin: 0 auto;
 }
 
@@ -131,6 +130,10 @@ body {
   height: 1.28rem;
   cursor: pointer;
   z-index: 2;
+}
+
+.container .tab .tab-item img:not(:first-child) {
+  display: none;
 }
 
 .container .tab .item1 {

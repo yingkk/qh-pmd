@@ -19,7 +19,12 @@ a:hover {
 
 /*禁止长按保存*/
 img {
+  user-select: none;
   pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   width: auto9;
   /* ie8 */
   -ms-interpolation-mode: bicubic;
