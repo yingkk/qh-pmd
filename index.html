@@ -20,8 +20,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <a class="ar" href="javascript: void(0)" target="_blank" data-url="weixin://dl/business/?t=VzkYmDZKBpj"
-            >
+            <a class="ar" href="javascript: void(0)" target="_blank" data-url="weixin://dl/business/?t=VzkYmDZKBpj">
                 <img src="./imgs/ar.png" alt="AR">
             </a>
             <a class="logo" href="index.html">
@@ -39,19 +38,23 @@
                             <a class="swiper-slide"
                                 href="http://www.qhdzzl.org.cn:9004/zybwg/zrbwg/resource/other/101/GAO_1533.html"
                                 data-hash="1">
-                                <img src="./imgs/1-1.png">
+                                <img data-src="./imgs/1-1.png" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
-                            <a class="swiper-slide" data-hash="2" href="weixin://dl/business/?t=dguZDPnvejv" target="_blank"
-                                data-url="weixin://dl/business/?t=dguZDPnvejv">
-                                <img src="./imgs/1-2.png" alt="">
+                            <a class="swiper-slide" data-hash="2" href="weixin://dl/business/?t=dguZDPnvejv"
+                                target="_blank" data-url="weixin://dl/business/?t=dguZDPnvejv">
+                                <img data-src="./imgs/1-2.png" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
-                            <a class="swiper-slide" data-hash="3" href="weixin://dl/business/?t=bWH3OZdmXDi" target="_blank"
-                                data-url="weixin://dl/business/?t=bWH3OZdmXDi">
-                                <img src="./imgs/1-3.png" alt="">
+                            <a class="swiper-slide" data-hash="3" href="weixin://dl/business/?t=bWH3OZdmXDi"
+                                target="_blank" data-url="weixin://dl/business/?t=bWH3OZdmXDi">
+                                <img data-src="./imgs/1-3.png" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
-                            <a class="swiper-slide" data-hash="4" href="weixin://dl/business/?t=IaggWdPkbcq" target="_blank"
-                                data-url="weixin://dl/business/?t=IaggWdPkbcq">
-                                <img src="./imgs/1-4.png" alt="">
+                            <a class="swiper-slide" data-hash="4" href="weixin://dl/business/?t=IaggWdPkbcq"
+                                target="_blank" data-url="weixin://dl/business/?t=IaggWdPkbcq">
+                                <img data-src="./imgs/1-4.png" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
                         </div>
                         <div class="swiper-button-next"></div>
@@ -69,7 +72,8 @@
                             <a class="swiper-slide"
                                 href="http://www.qhdzzl.org.cn:9004/zybwg/zrbwg/resource/img/by/gjgylc/qinghaidemo/index.html?startscene=1"
                                 data-hash="1">
-                                <img src="./imgs/2-1.png" alt="">
+                                <img data-src="./imgs/2-1.png" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
                         </div>
                         <div class="swiper-button-next"></div>
@@ -87,7 +91,8 @@
                             <a class="swiper-slide"
                                 href="http://www.qhdzzl.org.cn:9004/zybwg/zrbwg/resource/other/bpbxb/index.html"
                                 data-hash="1">
-                                <img src="./imgs/3-1.png" alt="">
+                                <img data-src="./imgs/3-1.png" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
                         </div>
                         <div class="swiper-button-next"></div>
@@ -119,7 +124,8 @@
                                 </div>
                             </div>
                             <a class="swiper-slide" href="pages/listen.html?id=3" data-hash="3">
-                                <img src="./imgs/4-3.png" alt="">
+                                <img data-src="./imgs/4-3.png" alt="" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
                         </div>
                         <div class="swiper-button-next"></div>
@@ -135,16 +141,20 @@
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <a class="swiper-slide" data-hash="1">
-                                <img src="./imgs/5-1.png" alt="">
+                                <img data-src="./imgs/5-1.png" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
                             <a class="swiper-slide" data-hash="2">
-                                <img src="./imgs/5-2.png" alt="">
+                                <img data-src="./imgs/5-2.png" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
                             <a class="swiper-slide" data-hash="3">
-                                <img src="./imgs/5-3.png" alt="">
+                                <img data-src="./imgs/5-3.png" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
                             <a class="swiper-slide" data-hash="4">
-                                <img src="./imgs/5-4.png" alt="">
+                                <img data-src="./imgs/5-4.png" class="swiper-lazy">
+                                <div class="swiper-lazy-preloader"></div>
                             </a>
                         </div>
                         <div class="swiper-button-next"></div>
@@ -272,6 +282,10 @@
             allowTouchMove: false,
             preventClicks: false,
             hashNavigation: true,
+            lazy: {
+                loadPrevNext: true,
+                loadPrevNextAmount: 2,
+            },
             hashNavigation: {
                 watchState: true
             },
@@ -362,7 +376,7 @@
 
     // nprogress
     $("a").click(function () {
-       console.log($(this))
+        console.log($(this))
     })
 
     window.onload = function () {

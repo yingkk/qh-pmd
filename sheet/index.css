@@ -176,16 +176,20 @@ body {
   content: "";
   background-size: cover;
   background-image: url("../imgs/right1.png");
+  background-repeat: no-repeat;
   width: 0.6133rem;
   height: 1.12rem;
+  outline: none;
 }
 
 .swiper-button-next.swiper-button-disabled::after {
   content: "";
   background-size: cover;
   background-image: url("../imgs/right0.png");
+  background-repeat: no-repeat;
   width: 0.6133rem;
   height: 1.12rem;
+  outline: none;
 }
 
 .swiper-button-prev:after,
@@ -193,20 +197,28 @@ body {
   content: "";
   background-size: cover;
   background-image: url("../imgs/left1.png");
+  background-repeat: no-repeat;
   width: 0.6133rem;
   height: 1.12rem;
+  outline: none;
 }
 
 .swiper-button-prev.swiper-button-disabled::after {
   content: "";
   background-size: cover;
   background-image: url("../imgs/left0.png");
+  background-repeat: no-repeat;
   width: 0.6133rem;
   height: 1.12rem;
+  outline: none;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  outline: none;
 }
 
 .swiper-button-prev.swiper-button-disabled,
 .swiper-button-next.swiper-button-disabled {
   cursor: auto;
-  pointer-events: none;
+  pointer-events: all;
 }
