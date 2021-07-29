@@ -110,7 +110,7 @@
                             <div class="swiper-slide" data-hash="1">
                                 <img src="./imgs/4-1.png" alt="">
                                 <div class="icon" data-audio-id="0">
-                                    <audio id="audio0" src="./audio/1.mp3" hidden="hidden"></audio>
+                                    <audio id="audio0" src="./audio/3-1.mp3" hidden="hidden"></audio>
                                     <img class="play" src="./imgs/audio-play.png">
                                     <img class="pause" src="./imgs/audio-pause.png">
                                 </div>
@@ -118,7 +118,7 @@
                             <div class="swiper-slide" data-hash="2">
                                 <img src="./imgs/4-2.png" alt="">
                                 <div class="icon" data-audio-id="1">
-                                    <audio id="audio1" src="./audio/2.mp3" hidden="hidden"></audio>
+                                    <audio id="audio1" src="./audio/3-2.mp3" hidden="hidden"></audio>
                                     <img class="play" src="./imgs/audio-play.png">
                                     <img class="pause" src="./imgs/audio-pause.png">
                                 </div>
@@ -234,14 +234,12 @@
     //audio init all
     let audioArr = [];
     const audioIds = ["audio0", "audio1"];
-    audioInit();
+    // initAudio();
 
     // video init all
     let videoJSArr = [];
     const videoElemIds = ["video0", "video1"];
-    for (let i = 0; i < videoElemIds.length; i++) {
-        videoJSArr.push(initVideo(videoElemIds[i]));
-    }
+    // initVideo();
 
     // 点击swiper-slide进入详情再返回时，定位到对应的tab
     const tabIndex = window.localStorage.getItem("tabIndex");
@@ -258,18 +256,22 @@
     $(".tab .tab-item").eq(_index).addClass("active");
 
     $(".tab .tab-item").click(function () {
-        // const _defaultSrc = $(".tab .active").find("img").eq(0).attr("data-default-src");
         $(".tab .active").find("img").eq(0).show();
         $(".tab .active").find("img").eq(1).hide();
         $(".tab .tab-item").removeClass("active");
         _index = $(this).index();
         window.localStorage.setItem("tabIndex", _index);
-        // const _activeSrc = "../imgs/tab-" + (_index + 1) + "-active.png";
         $(this).find("img").eq(0).hide();
         $(this).find("img").eq(1).show();
         $(this).addClass("active");
         $(".main div[class*=tab-]").hide();
         $(".main .tab-" + _index).show();
+        if(_index === 3){
+            initAudio();
+        }
+        if(_index === 5){
+            initVideo()
+        }
         initSwiper(_index);
         resetHashParam(1);
         pauseAll();
@@ -308,8 +310,14 @@
         });
     }
 
-    function initVideo(elemId) {
+    function convertToVideoJSObj(elemId) {
         return videojs(document.getElementById(elemId));
+    }
+
+    function initVideo() {
+        for (let i = 0; i < videoElemIds.length; i++) {
+            videoJSArr.push(convertToVideoJSObj(videoElemIds[i]));
+        }
     }
 
     function pauseAll() {
@@ -323,7 +331,7 @@
         videoJSArr[_index].load();
     }
 
-    function audioInit() {
+    function initAudio() {
         for (let i = 0; i < audioIds.length; i++) {
             audioArr.push(document.getElementById(audioIds[i]));
         }
@@ -375,13 +383,13 @@
     }
 
     // nprogress
-    $("a").click(function () {
-        console.log($(this))
-    })
+    // $("a").click(function () {
+    //     console.log($(this))
+    // })
 
-    window.onload = function () {
-        // NProgress.done()
-    }
+    // window.onload = function () {
+    //     // NProgress.done()
+    // }
 
     // function handleClick(e, item) {
     //     e.preventDefault();
