@@ -270,14 +270,13 @@
             initAudio();
         }
         if(_index === 5){
-            initVideo()
+            initVideo();
         }
         initSwiper(_index);
         resetHashParam(1);
         pauseAll();
         pauseAudioAll();
     });
-
 
     function initSwiper(index) {
         var swiper = new Swiper(".tab-" + index + " .main-content .swiper-container", {
@@ -366,7 +365,6 @@
             $(this).nextAll().eq(1).hide();
         }
     })
-
 
     // 重置URL hash参数：swiper的data-hash 为1
     function resetHashParam(dataHashVal) {
